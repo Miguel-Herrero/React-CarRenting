@@ -24,7 +24,6 @@ class CarList extends Component {
 }
 
 function mapStateToProps({ cars }) {
-  console.log('mapStateToProps ', cars)
   return { cars };
 }
 
