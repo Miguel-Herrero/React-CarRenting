@@ -11,6 +11,15 @@ controller.getAllAvailable = (req, res) => {
   const { from, to } = req.params;
 
   Car.getAllAvailable(from, to, (error, cars) => {
+
+    // const availableCars = [];
+    // availableCars.push({ 
+    //   availableCars: cars,
+    //   from: from,
+    //   to: to
+    // })
+    // res.send(availableCars);
+
     res.send({ 
       availableCars: cars,
       from: from,

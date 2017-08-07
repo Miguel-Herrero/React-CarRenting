@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
-import SearchForm from '../components/searchBar.jsx';
+import SearchBar from '../components/searchBar.jsx';
+import CarList from '../components/carsList.jsx';
 
 export default class App extends Component {
   render() {
     return (
-        <SearchForm />
+      <div>
+        <SearchBar />
+        <CarList />
+      </div>
     );
   }
 }
