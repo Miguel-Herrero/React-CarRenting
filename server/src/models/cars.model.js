@@ -1,36 +1,70 @@
+import mongoose from 'mongoose';
 import config from '../config/config.dev';
 
-const CarsModel = {};
+/**
+ * DATA SCHEMA
+ */
+const BookingSchema = mongoose.Schema({
+    fromDate: { type: Date, required: true },
+    toDate: { type: Date, required: true },
+    created: { type: Date, default: Date.now }
+}, {collection : 'Bookings'});
 
-CarsModel.getAllAvailable = (from, to, cb) => {
+BookingSchema.index({fromDate: -1, toDate: -1}, {unique: false});
 
-  // TO-DO: Mongoose find
-  const bookings = [
-    [1497974400000, 1498320000000],
-    [1497974400000, 1498838400000],
-    [1498147200000, 1498492800000],
-    [1498320060000, 1498752000000],
-    [1498323600000, 1498838400000]
-  ];
+/**
+ * DATA MODEL
+ */
+let BookingModel = mongoose.model('Booking', BookingSchema);
 
+BookingModel.getAll = (callback) => {
 
-  // Check whether a booking is between the requested time range
-  var bookingsChecked = bookings.reduce(function(itemsBooked, booking) {
-    if (from <= (booking[1] + config.preparingTime) && to >= (booking[0] - config.preparingTime)) {
-      // console.log('Esta reserva está en el período seleccionado', booking);
-      itemsBooked.push(booking);
-    } else {
-      // console.log('Esta reserva NO está en el período seleccionado');
-    }
-    return itemsBooked;
-  }, []);
+  const query = BookingModel.find().sort({ fromDate: 'asc' });
 
-  // console.log('Items booked = ' + bookingsChecked.length, bookingsChecked);
-  // console.log('Free cars', config.totalCars - bookingsChecked.length);
-
-
-
-  return cb(null, config.totalCars - bookingsChecked.length);
+  return query.exec();
 }
 
-export default CarsModel;
+BookingModel.getAllAvailable = (from, to, cb) => {
+
+  // Set the correct Number format for timestamps
+  from = parseInt(from);
+  to = parseInt(to);
+
+  const query = BookingModel.find({
+    fromDate: { $lt: to + config.preparingTime }, // Take preparation time into account!
+    toDate: { $gt: from - config.preparingTime }
+  });
+
+  query.exec((error, results) => {
+    results.map((value) => {
+      console.log(value.fromDate, value.toDate);
+    })
+
+    const totalAvailableCars = config.totalCars - results.length;
+
+    return cb(null, totalAvailableCars);
+  });
+}
+
+BookingModel.insertSamples = (callback) => {
+  const bookinsSamples = [
+    ['06/20/2017 16:00', '06/24/2017 16:00'],
+    ['06/20/2017 16:00', '06/30/2017 16:00'],
+    ['06/22/2017 16:00', '06/26/2017 16:00'],
+    ['06/24/2017 16:01', '06/29/2017 16:00'],
+    ['06/24/2017 17:00', '06/30/2017 16:00']
+  ];
+
+  bookinsSamples.map((booking) => {
+    const docToInsert = new BookingModel({
+      fromDate: booking[0],
+      toDate: booking[1]
+    });
+
+    docToInsert.save((error) => {});
+  });
+
+  callback();
+}
+
+export default BookingModel;

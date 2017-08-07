@@ -6,6 +6,10 @@ router.get('/from/:from/to/:to', (req, res) => {
     carController.getAllAvailable(req, res);
 });
 
+router.get('/insert', (req, res) => {
+    carController.insertSamples(req, res);
+});
+
 router.get('/', (req, res) => {
     carController.getAll(req, res);
 });
