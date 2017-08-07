@@ -11,7 +11,11 @@ controller.getAllAvailable = (req, res) => {
   const { from, to } = req.params;
 
   Car.getAllAvailable(from, to, (error, cars) => {
-    res.send(`<h1>We have ${cars} available for your selected time range!</h1>`);
+    res.send({ 
+      availableCars: cars,
+      from: from,
+      to: to
+    });
   })
 }
 
