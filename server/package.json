@@ -1,0 +1,20 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node --require 'babel-register' server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Miguel Herrero <miguel.herrerobaena@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "babel-preset-node5": "^12.0.1",
+    "babel-register": "^6.24.1",
+    "body-parser": "^1.17.2",
+    "cors": "^2.8.4",
+    "express": "^4.15.4",
+    "morgan": "^1.8.2"
+  }
+}

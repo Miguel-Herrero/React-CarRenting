@@ -1,0 +1,19 @@
+{
+  "name": "react-carrenting",
+  "version": "1.0.0",
+  "description": "Car renting app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/Miguel-Herrero/React-CarRenting.git"
+  },
+  "author": "Miguel Herrero <miguel.herrerobaena@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://gitlab.com/Miguel-Herrero/React-CarRenting/issues"
+  },
+  "homepage": "https://gitlab.com/Miguel-Herrero/React-CarRenting#README"
+}
