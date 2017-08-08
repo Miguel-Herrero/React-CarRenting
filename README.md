@@ -6,7 +6,15 @@ It is made of a server API that provides car bookings, and a front-end that allo
 
 ## Install and run
 
-First, start server API:
+**Recommended requirements** (developed and tested with these):
+
+- macOS Sierra 10.12.6
+- Nodejs v7.4.0
+- NPM 4.1.2
+- Yarn 0.27.5
+- Google Chrome 57.0.2987.133
+
+**First, start server API**:
 
 ```bash
 cd server
@@ -14,7 +22,7 @@ npm install
 npm start
 ```
 
-Second, start the front-end:
+**Second, start the front-end**:
 
 ```bash
 cd .. // Root directory of the project
@@ -22,7 +30,7 @@ npm install
 npm start
 ```
 
-Now, browse to [http://localhost:8080](http://localhost:8080) and voilà!
+**Last, browse to [http://localhost:8080](http://localhost:8080) and _voilà_!**
 
 ## How to use it
 
