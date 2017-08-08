@@ -7,8 +7,8 @@ class BookingsTable extends Component {
     const id = bookingData['_id'];
     let { fromDate, toDate } = bookingData;
 
-    fromDate = Moment.tz(fromDate, "Europe/Madrid").format();
-    toDate = Moment.tz(toDate, "Europe/Madrid").format();
+    fromDate = Moment.tz(fromDate, "Europe/Madrid").format("DD-MM-YYYY @ HH:mm");
+    toDate = Moment.tz(toDate, "Europe/Madrid").format("DD-MM-YYYY @ HH:mm");
 
     return (
       <tr key={id}>
@@ -26,7 +26,7 @@ class BookingsTable extends Component {
     }
 
     return (
-      <div>
+      <div className="bookingsTable">
         <h3>These are the current bookings:</h3>
         <table className="table table-hover">
           <thead>

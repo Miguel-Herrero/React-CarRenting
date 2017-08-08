@@ -9,44 +9,59 @@ class SearchForm extends Component {
   constructor(props) {
     super(props);
 
-    // this.state = { 
-    //   from: Moment().add(1, 'hour'),
-    //   to: Moment().add(1, 'day').add(1, 'hour')
-    // };
+    // Set initial state for search form inputs
     this.state = {
-      from: '',
+      from: null,
       to: ''
     };
 
+    // Fetch current bookings when no dates are selected
     this.props.fetchBookings();
 
-    // To allow this functions to access this
+    // To allow these functions to access this
     this.onFromDatetimeChange = this.onFromDatetimeChange.bind(this);
     this.onToDatetimeChange = this.onToDatetimeChange.bind(this);
     this.onFormSubmit = this.onFormSubmit.bind(this);
   }
 
+  /**
+   * Set the from value after selecting a datetime
+   * @param {Object} datetime 
+   */
   onFromDatetimeChange(datetime) {
     this.setState({ from: datetime });
   }
 
+  /**
+   * Set the tp value after selecting a datetime
+   * @param {Object} datetime 
+   */
   onToDatetimeChange(datetime) {
     this.setState({ to: datetime });
   }
 
+  /**
+   * Fetch bookings for selected time range
+   * @param {*} event 
+   */
   onFormSubmit(event) {
     // Stop browser from reloading when pressing enter or submitting the form
     event.preventDefault();
 
-    const from = this.state.from.valueOf();
-    const to = this.state.to.valueOf();
-
-    // TO-DO: sent error If from > to
-
-    // Fetch the number of available cars
-    this.props.fetchBookings(from, to);
+    if (this.state.from && this.state.to) {
+      const from = this.state.from.valueOf();
+      const to = this.state.to.valueOf();
+      this.props.fetchBookings(from, to);
+    } else {
+      this.props.fetchBookings();
+    } 
   }
 
+  /**
+   * Only allow dates after now, not past dates
+   * @param {Object} currentDate 
+   * @param {Object} selectedDate 
+   */
   isValidDate(currentDate, selectedDate) {
     const yesterday = Datetime.moment().subtract( 1, 'day' );
     return currentDate.isAfter( yesterday );
