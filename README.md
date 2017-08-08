@@ -32,7 +32,7 @@ If you select a start date and a end date, then the app will show you how many c
 
 Play with these booked ranges to check that you can't book a car if it's being used or prepared (one hour before and after the booking time):
 
-![Diagram with DB bookings](https://gitlab.com/Miguel-Herrero/React-CarRenting/blob/master/bookingsDiagram.png)
+![Diagram with DB bookings](bookingsDiagram.png)
 
 ## TO-DO
 
