@@ -4,10 +4,12 @@ import cors from "cors";
 import morgan from 'morgan'
 import cars from './src/routes/cars.route';
 import config from './src/config/config.dev';
-// import Schema from './schema';
+import connectToDb from './src/db/connect';
 
 const APP_PORT = 4000;
 const port = config.serverPort;
+
+connectToDb();
 
 const app = Express();
 app.use(cors());

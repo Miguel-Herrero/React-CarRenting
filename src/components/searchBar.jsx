@@ -40,8 +40,11 @@ class SearchBar extends Component {
     this.props.fetchCarsAvailable(from, to);
   }
 
+  // var yesterday = Datetime.moment().subtract( 1, 'day' );
+
   isValidDate(currentDate, selectedDate) {
-    return currentDate.isAfter(selectedDate);
+    const yesterday = Datetime.moment().subtract( 1, 'day' );
+    return currentDate.isAfter( yesterday );
   }
 
   render() {
@@ -49,12 +52,14 @@ class SearchBar extends Component {
       <div>
       <form onSubmit={this.onFormSubmit}>
         <Datetime
+          locale="es"
           onChange={this.onFromDatetimeChange}
           isValidDate={this.isValidDate}
           closeOnSelect={true}
           value={this.state.from}
         />
         <Datetime
+          locale="es"
           onChange={this.onToDatetimeChange}
           isValidDate={this.isValidDate}
           closeOnSelect={true}
