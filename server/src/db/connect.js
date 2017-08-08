@@ -15,7 +15,7 @@ const connectToDb = () => {
     });
 
     connection.then(function(db) {
-      console.info(`Connected to MongoDB at ${mongoUri}`);
+      console.info(`Connected to MongoDB at ${mongoUri}`); // eslint-disable-line no-console
     });
 }
 

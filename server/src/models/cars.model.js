@@ -4,33 +4,33 @@ import config from '../config/config.dev';
 /**
  * DATA SCHEMA
  */
-const BookingSchema = mongoose.Schema({
+const CarSchema = mongoose.Schema({
     fromDate: { type: Date, required: true },
     toDate: { type: Date, required: true },
     created: { type: Date, default: Date.now }
 }, {collection : 'Bookings'});
 
-BookingSchema.index({fromDate: -1, toDate: -1}, {unique: false});
+CarSchema.index({fromDate: -1, toDate: -1}, {unique: false});
 
 /**
  * DATA MODEL
  */
-let BookingModel = mongoose.model('Booking', BookingSchema);
+let CarModel = mongoose.model('Cars', CarSchema);
 
-BookingModel.getAll = (callback) => {
+CarModel.getAll = (callback) => {
 
-  const query = BookingModel.find().sort({ fromDate: 'asc' });
+  const query = CarModel.find().sort({ fromDate: 'asc' });
 
   return query.exec();
 }
 
-BookingModel.getAllAvailable = (from, to, cb) => {
+CarModel.getAllAvailable = (from, to, cb) => {
 
   // Set the correct Number format for timestamps
   from = parseInt(from);
   to = parseInt(to);
 
-  const query = BookingModel.find({
+  const query = CarModel.find({
     fromDate: { $lt: to + config.preparingTime }, // Take preparation time into account!
     toDate: { $gt: from - config.preparingTime }
   });
@@ -46,7 +46,7 @@ BookingModel.getAllAvailable = (from, to, cb) => {
   });
 }
 
-BookingModel.insertSamples = (callback) => {
+CarModel.insertSamples = (callback) => {
   const bookinsSamples = [
     ['06/20/2017 16:00', '06/24/2017 16:00'],
     ['06/20/2017 16:00', '06/30/2017 16:00'],
@@ -56,7 +56,7 @@ BookingModel.insertSamples = (callback) => {
   ];
 
   bookinsSamples.map((booking) => {
-    const docToInsert = new BookingModel({
+    const docToInsert = new CarModel({
       fromDate: booking[0],
       toDate: booking[1]
     });
@@ -67,4 +67,4 @@ BookingModel.insertSamples = (callback) => {
   callback();
 }
 
-export default BookingModel;
+export default CarModel;
