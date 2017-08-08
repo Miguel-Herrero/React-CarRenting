@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 import cors from "cors";
 import morgan from 'morgan'
 import cars from './src/routes/cars.route';
+import bookings from './src/routes/bookings.route';
 import config from './src/config/config.dev';
 import connectToDb from './src/db/connect';
 
@@ -18,6 +19,7 @@ app.use(bodyParser.json());
 app.use(morgan("dev"));
 
 app.use('/api/cars', cars);
+app.use('/api/bookings', bookings);
 
 //Index route
 app.get('/', (req, res) => {

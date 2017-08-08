@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
-import SearchBar from '../components/searchBar.jsx';
-import CarList from '../components/carsList.jsx';
-import BookingList from './bookingList';
+import Header from './header';
+import Footer from './footer';
+import SearchForm from '../containers/searchForm';
+import BookingsTable from '../components/bookigsTable';
 
 export default class App extends Component {
   render() {
     return (
-      <div>
-        <SearchBar />
-        <CarList />
-        <BookingList />
+      <div className="app">
+        <Header />
+        <SearchForm />
+        <BookingsTable />
+        <Footer />
       </div>
     );
   }

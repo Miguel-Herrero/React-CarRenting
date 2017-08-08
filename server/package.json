@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node --require 'babel-register' server.js",
+    "start": "dbUri=mongodb://demoUser:Azt-MG4-oZ4-5Wb@ds145220.mlab.com:45220/bookings node --require 'babel-register' server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Miguel Herrero <miguel.herrerobaena@gmail.com>",
