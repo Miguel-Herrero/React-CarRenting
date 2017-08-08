@@ -30,6 +30,10 @@ When first loaded (no dates in date selectors) the booking lists represent the w
 
 If you select a start date and a end date, then the app will show you how many cars we hava available, and the bookings for that same date range.
 
+Play with these booked ranges to check that you can't book a car if it's being used or prepared (one hour before and after the booking time):
+
+![Diagram with DB bookings](https://gitlab.com/Miguel-Herrero/React-CarRenting/blob/master/bookingsDiagram.png)
+
 ## TO-DO
 
 These are some things I'd like to implement:
