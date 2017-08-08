@@ -23,25 +23,3 @@ export function fetchBookings(from, to, callback) {
     payload: request
   }
 }
-
-export function fetchCarsAvailable(from, to, callback) {
-  const url = `${ROOT_URL}/cars/from/${from}/to/${to}`;
-
-  const request = axios.get(url)
-
-  return {
-    type: FETCH_CARS_AVAILABLE,
-    payload: request
-  }
-}
-
-export function fetchCarsBooked() {
-  const url = `${ROOT_URL}/cars/`;
-
-  const request = axios.get(url);
-
-  return {
-    type: FETCH_CARS_BOOKED,
-    payload: request
-  }
-}
