@@ -59,6 +59,7 @@ class SearchForm extends Component {
         <form onSubmit={this.onFormSubmit} className="input-group">
           <div className="col-md-5">
             <Datetime
+              locale="es"
               onChange={this.onFromDatetimeChange}
               isValidDate={this.isValidDate}
               closeOnSelect={true}
@@ -67,6 +68,7 @@ class SearchForm extends Component {
           </div>
           <div className="col-md-5">
             <Datetime
+              locale="es"
               onChange={this.onToDatetimeChange}
               isValidDate={this.isValidDate}
               closeOnSelect={true}

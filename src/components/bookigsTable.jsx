@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Moment from 'moment-timezone';
 
 class BookingsTable extends Component {
   renderBooking(bookingData) {
     const id = bookingData['_id'];
-    const { fromDate, toDate } = bookingData;
+    let { fromDate, toDate } = bookingData;
+
+    fromDate = Moment.tz(fromDate, "Europe/Madrid").format();
+    toDate = Moment.tz(toDate, "Europe/Madrid").format();
 
     return (
       <tr key={id}>
@@ -20,8 +24,6 @@ class BookingsTable extends Component {
         <div>Loading…</div>
       );
     }
-
-    console.log('this.props.bookings.bookings', this.props.bookings.bookings);
 
     return (
       <div>
@@ -42,9 +44,8 @@ class BookingsTable extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  console.log('state', state);
-  return { bookings: state.bookings };
+function mapStateToProps({ bookings }) {
+  return { bookings };
 }
 
 export default connect(mapStateToProps)(BookingsTable);
