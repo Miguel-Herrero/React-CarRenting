@@ -79,6 +79,7 @@ class SearchForm extends Component {
               isValidDate={this.isValidDate}
               closeOnSelect={true}
               value={this.state.from}
+              inputProps={{ placeholder: 'Select first day of rental' }}
             />
           </div>
           <div className="col-md-5">
@@ -88,11 +89,12 @@ class SearchForm extends Component {
               isValidDate={this.isValidDate}
               closeOnSelect={true}
               value={this.state.to}
+              inputProps={{ placeholder: 'Select last day of rental' }}
             />
           </div>
           <div className="col-md-2">
             <span className="input-group-btn">
-              <button type="submit" className="btn btn-primary">Check dates!</button>
+              <button type="submit" className="btn btn-primary">Check cars!</button>
             </span>
           </div>
         </form>

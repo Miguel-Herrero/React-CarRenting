@@ -7,8 +7,8 @@ class BookingsTable extends Component {
     const id = bookingData['_id'];
     let { fromDate, toDate } = bookingData;
 
-    fromDate = Moment.tz(fromDate, "Europe/Madrid").format("DD-MM-YYYY @ HH:mm");
-    toDate = Moment.tz(toDate, "Europe/Madrid").format("DD-MM-YYYY @ HH:mm");
+    fromDate = Moment.tz(fromDate, "Europe/Madrid").format("DD/MM/YYYY @ HH:mm");
+    toDate = Moment.tz(toDate, "Europe/Madrid").format("DD/MM/YYYY @ HH:mm");
 
     return (
       <tr key={id}>
